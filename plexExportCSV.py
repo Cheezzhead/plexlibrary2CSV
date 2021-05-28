@@ -1,4 +1,4 @@
-from plexapi.server import PlexServer
+from plexapi.server import PlexServer, CONFIG
 from datetime import datetime
 import plexapi.exceptions
 import plexapi.library
@@ -83,6 +83,11 @@ def display_tv_libraries():
 # Your plex credentials
 PLEX_URL = plexExportCSV_config.PLEX_URL
 PLEX_TOKEN = plexExportCSV_config.PLEX_TOKEN
+
+if not PLEX_URL:
+    PLEX_URL = CONFIG.data['auth'].get('server_baseurl')
+if not PLEX_TOKEN:
+    PLEX_TOKEN = CONFIG.data['auth'].get('server_token')
 
 # Create plex server instance
 print(
