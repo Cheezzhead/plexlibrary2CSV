@@ -81,12 +81,13 @@ def display_tv_libraries():
 
 
 # Your plex credentials
-PLEX_URL = plexExportCSV_config.PLEX_URL
-PLEX_TOKEN = plexExportCSV_config.PLEX_TOKEN
-
-if not PLEX_URL:
+try:
+    PLEX_URL = plexExportCSV_config.PLEX_URL
+except:
     PLEX_URL = CONFIG.data['auth'].get('server_baseurl')
-if not PLEX_TOKEN:
+try:
+    PLEX_TOKEN = plexExportCSV_config.PLEX_TOKEN
+except:
     PLEX_TOKEN = CONFIG.data['auth'].get('server_token')
 
 # Create plex server instance
